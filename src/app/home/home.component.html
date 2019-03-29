@@ -1,0 +1,20 @@
+<input class = 'btn textBox' type="text" [(ngModel)]="myInput"  placeholder="Please Add New Todo"/>
+<button class = 'btn' (click) = "addTodo()">Add</button>
+<button class = 'btn' (click) = "sortAscending()">Sort by title (Z-A)</button>
+<button class = 'btn' (click) = "sortDescending()">Sort by title (A-Z)</button>
+<div class = 'listItem'>
+<ng-container *ngIf = "jsonData.length;else loading">
+<ng-container *ngFor = "let data of jsonData; let index = index" >
+    <p>
+      <label for="box{{index}}" [style.text-decoration]="data.strike ? 'line-through' : 'none'">
+        <input type='checkbox' id= "box{{index}}" [checked]="data.strike" (change)="delete($event,index,data)"/> {{data.title}} 
+      </label>
+      <button class = 'btn' (click)="edit($event.target, data)" *ngIf = '!data.strike' >Edit</button>
+      <ng-container *ngIf = 'data.isEdit && !data.strike'>
+          <input class = 'btn textBox' type = 'text'(input) = 'update($event.target.value, index)'  value = '{{data.title}}'>
+      </ng-container>
+    </p>
+  </ng-container>
+</ng-container>
+</div>
+<ng-template #loading> Loading...</ng-template>

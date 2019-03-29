@@ -1,0 +1,7 @@
+
+<ng-container *ngIf = "deletedJson.length;else noRecord" >
+  <ng-container *ngFor = "let data of deletedJson">
+      <p> {{data.title}} </p>
+  </ng-container>
+</ng-container>
+<ng-template #noRecord> No Record Found</ng-template>

@@ -1,0 +1,27 @@
+*{
+    margin:0;
+    padding:0;
+}
+html, body{
+    width:100%;
+}
+.mainContainer{
+    position: relative;
+    width: 50%;
+    height: 900px;
+    margin: 0 auto;
+    background: antiquewhite;
+}
+.navi{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2%;
+}
+.navi button{
+    padding: 7%;
+    background: cadetblue;
+    border: 1px solid black;
+    color: white;
+    margin-left: 4px;
+}
