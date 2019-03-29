@@ -16,18 +16,19 @@ export class HomeComponent implements OnInit {
   constructor ( public myService:ServiceService){}
 
   delete(event,index,currentData){
-    console.log(event.target)
+
     if(event.target.checked){
+      
       this.deletedData.push(currentData);
       this.jsonData[index].strike = true;
     }else{
       let temp = [];
-       this.deletedData.forEach(data => {   if( data.id !== currentData.id) temp.push(data);  })
+      console.log(this.deletedData)
+       this.deletedData.forEach(data => {  if( data.id != currentData.id) { temp.push(data);}  })
        this.deletedData = temp;
       this.jsonData[index].strike = false;
     }
-    console.log(uuid())
-    console.log();
+   // console.log(this.deletedData);
     this.myService.setDeletedWords(this.deletedData);
    // this.jsonData.splice(index,1);
   }
@@ -40,7 +41,6 @@ export class HomeComponent implements OnInit {
     el.innerHTML = 'Close'
   }
   update(data, index){
-    console.log(data)
     this.jsonData[index].title = data;
   }
   sortAscending(){
@@ -75,13 +75,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(){
     if(this.myService.jsonLoaded){
       this.jsonData = this.myService.jsonData;
+      this.deletedData =  this.myService.deletedWords;
     }
     else{
       this.jsonData = this.myService.getConfig().subscribe(data => { this.jsonData = data; },err=>{},()=>{ 
         this.myService.jsonLoaded = true;
          this.jsonData.forEach(data=>{ data.strike = false})
          this.myService.jsonData = this.jsonData;
-        });;
+         
+        });
+         
     }
     
   }

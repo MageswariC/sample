@@ -18,3 +18,12 @@
 .textBox{
     width: 30%;
 }
+label{
+    margin-top: 3%;
+    line-height: 2
+}
+label + .btn{
+    padding: 5px;
+    margin-top: 0;
+    
+}

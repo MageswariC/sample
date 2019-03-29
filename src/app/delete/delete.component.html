@@ -1,7 +1,9 @@
-
+<div class = 'deletePart'>
+<h2>Deleted Items</h2>
 <ng-container *ngIf = "deletedJson.length;else noRecord" >
-  <ng-container *ngFor = "let data of deletedJson">
-      <p> {{data.title}} </p>
+  <ng-container *ngFor = "let data of deletedJson; let i = index" >
+      <p>{{i+1}}.  {{data.title}} </p>
   </ng-container>
 </ng-container>
 <ng-template #noRecord> No Record Found</ng-template>
+</div>

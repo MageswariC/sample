@@ -19,13 +19,13 @@ export class ServiceService {
   }
 
   getDeletedWords(){
-    return this.deletedWords
+    return this.deletedWords;
   }
 
   setDeletedWords(data){
-    if(data){
+    
       this.deletedWords = data;
-    }
+    
     
   }
 }

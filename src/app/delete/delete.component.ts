@@ -12,7 +12,9 @@ export class DeleteComponent implements OnInit {
   constructor(public myService:ServiceService ) { }
 
   ngOnInit() {
+      
       this.deletedJson = this.myService.getDeletedWords();
+      console.log(this.deletedJson);
   }
 
 }
